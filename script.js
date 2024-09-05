@@ -56,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (data.check) {
                     outputText.textContent += stringChar; // Update output text
                     // Convert accumulated text to speech
-                    speakText(stringChar);
                     stringChar = ""; // Clear stringChar if it's a valid English word
                 }
             })
@@ -69,9 +68,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Function to speak the provided text
-    function speakText(text) {
-        const utterance = new SpeechSynthesisUtterance(text);
-        speechSynthesis.speak(utterance);
-    }
 });

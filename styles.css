@@ -31,16 +31,38 @@ h1 {
     animation: fadeIn 1s ease-in-out;
 }
 
+/* Main Content Styles */
+.main-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Space between image and video container */
+    width: 80%;
+    max-width: 1200px;
+    margin-bottom: 2rem; /* Space between main content and output container */
+}
+
+/* Image Styles */
+#left-image {
+    width: 300px; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
 /* Video Container Styles */
 .video-container {
     position: relative;
-    width: 50%;
-    height: 500px;
+    width: 400px; /* Smaller width for video container */
+    height: 300px; /* Adjust height proportionally */
     border-radius: 20px;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
     transform-style: preserve-3d;
     transform-origin: center center;
     animation: rotateIn 1s ease-in-out;
+    display: flex; /* Center video and canvas within the container */
+    align-items: center;
+    justify-content: center;
 }
 
 #video,
@@ -64,9 +86,10 @@ h1 {
 #video {
     width: 100%;
 }
+
 /* Output Container Styles */
 #output-container {
-    margin-top: 2rem;
+    margin-top: 4rem; /* Increase space from the bottom */
     padding: 2rem;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 20px;
@@ -76,12 +99,13 @@ h1 {
     animation: fadeIn 1s ease-in-out;
 }
 
-#con{
+#con {
     margin-bottom: 10px;
     font-size: 50px;
     padding-top: 40px;
     color: aqua;
 }
+
 #output-text {
     margin: 0;
 }

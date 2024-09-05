@@ -10,9 +10,15 @@
     <div class="container">
         <div id="con"></div>
         <h1>Sign Language Speaker</h1>
-        <div class="video-container">
-            <video id="video" width="640" height="480" autoplay></video>
-            <canvas id="canvas" width="640" height="480"></canvas>
+        <div class="main-content">
+            <!-- New image -->
+            <img id="left-image" src="signs.jpg" alt="signs">
+
+            <!-- Video and canvas container -->
+            <div class="video-container">
+                <video id="video" autoplay></video>
+                <canvas id="canvas"></canvas>
+            </div>
         </div>
         <div id="output-container">
             <p id="output-text">Output Text: </p>
