@@ -3,9 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('canvas');
     const outputText = document.getElementById('output-text');
     const charac = document.getElementById('con');
-    let stream = null; // Declare stream variable
-    let stringChar = ""; // Initialize stringChar
-
+    let stream = null; 
+    let stringChar = ""; 
     if (navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ video: true })
             .then((s) => {
@@ -16,17 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('Error accessing the camera: ', err);
             });
     }
-
     const context = canvas.getContext('2d');
-
     setInterval(() => {
         context.drawImage(video, 0, 0, 640, 480);
         const imageData = canvas.toDataURL('image/jpeg')
         sendImageData(imageData);
     }, 3000);
-
     function sendImageData(base64Data) {
-        // Convert imageData to base64 string
         fetch('http://localhost:5000/process_image', {
             method: 'POST',
             headers: {
@@ -36,14 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(response => response.json())
         .then(data => {
-            stringChar += data.text; // Accumulate characters
+            stringChar += data.text; 
             charac.textContent = data.text;
             if (charac.style.color == 'aqua'){
                 charac.style.color = 'green' 
             } else {
                 charac.style.color = 'aqua'
             }
-            // Check if formed word is an English word
             fetch('http://localhost:5000/check_word', {
                 method: 'POST',
                 headers: {
@@ -54,9 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 if (data.check) {
-                    outputText.textContent += stringChar; // Update output text
-                    // Convert accumulated text to speech
-                    stringChar = ""; // Clear stringChar if it's a valid English word
+                    outputText.textContent += stringChar; 
+                    stringChar = ""; 
                 }
             })
             .catch(error => {
@@ -67,5 +60,4 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error processing image: ', error);
         });
     }
-
 });
